@@ -1,0 +1,707 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bege: #FEFEF5;
+  --bordo: #9b144a;
+  /* outras opções de bordo #6D012B #63183F */
+  --bordo-escuro: #850f3e;
+  /*usar no código (background-color: var(--bordo);).*/
+  --verde: #4F8C3E;
+  --azul: #021D44;
+  --cinza: #1C1C1C;
+}
+
+body {
+
+  font-family: 'Mulish', sans-serif;
+  /* Opção de fonte para títulos Cormorant Infant */
+  line-height: 1.6;
+  background-color: var(--bege);
+  color: var(--cinza);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  /* ocupa 100% da altura da tela */
+  display: flex;
+  /* ativa o flexbox */
+  flex-direction: column;
+  /* empilha os itens em coluna (h1, p, botão) */
+  justify-content: center;
+  /* centraliza verticalmente */
+  align-items: center;
+  /* centraliza horizontalmente */
+  text-align: center;
+  /* deixa textos centralizados */
+
+  /* fundo */
+  background-image: url('../fotos/opfthero1300.jpg');
+  /*se CSS tá dentro de /css, mas a imagem tá em /fotos, você precisa do ../ pra sair da pasta css e voltar pro nível do projeto*/
+  background-size: cover;
+  /* a imagem cobre toda a área */
+  background-position: center;
+  /* foca o centro da imagem */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  /* preto com 10% de transparência */
+  z-index: 1;
+  /* fica atrás do texto */
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+  /* aumenta o espaço para o parágrafo */
+  font-family: "Cormorant Infant";
+  font-size: 3.5rem;
+  color: #fff
+}
+
+.hero p {
+  position: relative;
+  z-index: 2;
+  margin-top: 10px;
+  font-family: "Lora";
+  font-size: 1.5rem;
+  color: #FFF
+}
+
+.hero h1,
+.hero p {
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.hero button {
+  margin-top: 60px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  background-color: var(--bordo);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  /* garante que o texto e botão fiquem acima do overlay */
+}
+
+.hero button:hover {
+  position: relative;
+  z-index: 2;
+  background-color: var(--bordo-escuro);
+}
+
+
+/* quando o botão é clicado */
+#botao-iniciar:active {
+  transform: scale(0.95);
+  /* “compressão” */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.caixa-frase,
+.caixa-alternativas-texto,
+.conteudo-caixa,
+.conteudo-caixa-s-leg {
+  background-color: rgba(254, 254, 245, 0.97);
+}
+
+/* sessão ocupa a tela inteira */
+.intro-quiz {
+  height: 105vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.folha {
+  transform: translateY(60px);
+  /* começa deslocada pra baixo */
+  opacity: 0;
+  /* invisível no início */
+  transition: transform 1.3s ease, opacity 1.3s ease;
+}
+
+/* estado quando o elemento for revelado */
+.folha.visivel {
+  transform: translateY(1px);
+  opacity: 1;
+}
+
+.caixa-frase {
+  font-size: clamp(1rem, 1.2vw + 0.8rem, 1.4rem);
+  width: 80%;
+  max-width: 800px;
+  min-width: 280px;
+  height: auto;
+  min-height: 180px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 40px;
+  padding: 1.8em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  /* centraliza horizontalmente */
+  box-sizing: border-box;
+  /* garante que padding não aumente o total */
+}
+
+.sessao-vh {
+  min-height: 100vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0rem;
+}
+
+.caixa-alternativas-texto {
+  width: 90%;
+  max-width: 900px;
+  height: auto;
+  min-height: 500px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 40px;
+  padding: 2em;
+  margin: 0 auto;
+  /* centraliza horizontal */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+}
+
+.caixa-alternativas-texto fieldset {
+  border: none;
+  /* remove a borda do fieldset */
+  padding: 0;
+  /* opcional, se quiser controlar só pelo padding da div */
+  margin: 0;
+}
+
+/* enunciado da pergunta */
+.caixa-alternativas-texto .enunciado {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--cinza);
+  margin-bottom: 2em;
+  text-align: center;
+  /* reseta comportamento do legend */
+  padding: 0;
+  display: block;
+  /* força a se comportar como um bloco normal */
+  width: 100%;
+}
+
+/* cada label ocupa a linha inteira — torna a área de hover grande */
+label.alternativa,
+label.alternativa-peq {
+  display: flex;
+  /* facilita alinhar rádio + texto */
+  gap: 12px;
+  /* espaço entre input e texto */
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  /* AUMENTE aqui pra área de clique maior */
+  border-radius: 18px;
+  margin-bottom: 18px;
+  /* distância entre alternativas */
+  cursor: pointer;
+  transition: background-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* cada label ocupa a linha inteira — torna a área de hover grande */
+label.alternativa {
+  padding: 1.1rem 1.2rem;
+  /* AUMENTE aqui pra área de clique maior */
+}
+
+
+/* cada label ocupa a linha inteira — torna a área de hover grande */
+label.alternativa-peq {
+  padding: 1.8rem 1.8rem;
+  /* AUMENTE aqui pra área de clique maior */
+}
+
+/* faz o texto quebrar corretamente e ocupar o restante do espaço */
+label.alternativa span,
+label.alternativa-peq span {
+  display: block;
+  flex: 1 1 auto;
+  line-height: 1.4;
+}
+
+/* alinha melhor o rádio verticalmente (ajuste top conforme necessário) */
+label.alternativa input[type="radio"],
+label.alternativa-peq input[type="radio"] {
+  flex: 0 0 auto;
+  margin-top: 6px;
+  accent-color: #000;
+}
+
+/* hover / foco (sem causar reflow grande) */
+label.alternativa:hover,
+label.alternativa:focus-within,
+label.alternativa-peq:hover,
+label.alternativa-peq:focus-within {
+  background-color: #FDFDED;
+  transform: translateY(-4px);
+  /* levanta um pouco sem alargar */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* se preferir efeito de leve aumento em vez de translate:
+   substituir transform acima por transform: scale(1.01);
+   e adicionar transform-origin: left center; para não quebrar o layout */
+
+/* destaque quando selecionado (input dentro do label) */
+label.alternativa input[type="radio"]:checked+span,
+label.alternativa-peq input[type="radio"]:checked+span {
+  font-weight: 600;
+  accent-color: #000;
+
+}
+
+/* caixa centralizada */
+.conteudo-caixa {
+  width: 60%;
+  max-width: 550px;
+  height: 90%;
+  border-radius: 40px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* centraliza conteúdo na horizontal */
+  justify-content: flex-start;
+  /* espaça legend e foto */
+  padding: 1rem;
+  box-sizing: border-box;
+
+
+}
+
+.conteudo-caixa fieldset,
+.conteudo-caixa-s-leg fieldset {
+  all: unset;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* caixa centralizada */
+.enunciado {
+  width: 70%;
+  max-width: 500px;
+  height: auto;
+  min-height: 30%;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  box-sizing: border-box;
+
+}
+
+/* enunciado no topo */
+.enunciado,
+.enunciado-txt {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--cinza);
+  margin-bottom: 0.5em;
+  text-align: center;
+  /* reseta comportamento do legend */
+  padding: 0;
+  display: block;
+  /* força a se comportar como um bloco normal */
+  width: 100%;
+
+}
+
+/* esconde o input padrão */
+.opcao-foto input[type="radio"] {
+  display: none;
+}
+
+/* imagem da alternativa */
+.opcao-foto img {
+  width: 400px;
+  /* largura fixa no desktop */
+  max-width: 100%;
+  /* responsivo: nunca ultrapassa a tela */
+  height: auto;
+  /* mantém proporção */
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin: auto;
+  /* centraliza no espaço da caixa */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* efeito hover */
+.opcao-foto:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* quando a imagem for selecionada */
+.opcao-foto input[type="radio"]:checked + picture img {
+  outline: 5px solid rgba(50, 50, 50, 0.9); /* cinza translúcido */
+  transform: scale(1.04); /* leve aumento */
+  box-shadow: 
+    0 0 10px rgba(50, 50, 50, 0.8),
+    0 0 20px rgba(50, 50, 50, 0.7)
+    0 0 40px rgba(50, 50, 50, 0.6),
+    0 0 60px rgba(50, 50, 50, 0.5);
+  transition: all 0.25s ease; /* animação suave */
+  border-radius: 12px; /* caso queira cantos levemente arredondados */
+}
+
+
+fieldset {
+  border: 0 !important;
+  /* remove qualquer borda */
+  margin: 0;
+  padding: 0;
+  min-inline-size: 0;
+  /* reseta largura mínima que o Chrome aplica */
+}
+
+legend {
+  all: unset;
+  /* reseta completamente o estilo */
+  display: block;
+  /* força a ser um bloco normal */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#botao-ver-resultado {
+  display: block;
+  /* garante que seja um bloco e não inline */
+  margin: auto auto 6rem;
+  padding: 1rem 2rem;
+  /* tamanho do botão */
+  font-size: 1.1rem;
+  border-radius: 14px;
+  background-color: var(--bordo);
+  color: var(--bege);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
+}
+
+#botao-ver-resultado:hover {
+  background-color: var(--bordo-escuro);
+  /* efeito hover */
+}
+
+.resultado-tela-cheia {
+  min-height: 100vh;
+  /* ocupa pelo menos o tamanho da tela */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* centraliza o conteúdo verticalmente */
+  align-items: center;
+  padding: 3rem 1rem;
+  /* espaço interno */
+  box-sizing: border-box;
+}
+
+
+.resultado {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.resultado.visivel {
+  opacity: 1;
+  transform: translateY(0);
+  font-size: clamp(1rem, 1.2vw + 0.8rem, 1.4rem);
+  width: 90%;
+  max-width: 1000px;
+  min-width: 280px;
+  height: auto;
+  min-height: 180px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 40px;
+  padding: 1.8em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;
+  /* centraliza horizontalmente */
+  box-sizing: border-box;
+}
+
+/* Ajuste extra para mobile */
+  @media (max-width: 768px) {
+    .resultado.visivel {
+      width: 95%;
+      /* aproveita mais a tela pequena */
+      max-width: none;
+      /* remove limite máximo */
+      padding: 1rem;
+      /* menos padding para caber melhor */
+    }
+  }
+
+
+#resultado h2 {
+  font-size: clamp(1.4rem, 1.8vw + 0.8rem, 1.8rem);
+  margin: 0 auto;
+  color: #333;
+}
+
+.descricao-estilo {
+  font-size: clamp(1rem, 1.2vw + 0.6rem, 1.3rem);
+  line-height: 1.6;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-width: 700px;
+  text-align: justify;
+}
+
+
+#resultado hr {
+  border: none;
+  border-top: 2px solid #ddd;
+  margin: 2rem auto;
+  width: 40%;
+}
+
+#resultado h3 {
+  font-size: clamp(1.2rem, 1.4vw + 0.7rem, 1.6rem);
+  margin-top: 1rem;
+  color: #555;
+}
+
+.placar-lista {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.placar-lista li {
+  margin: 1rem 0;
+  font-size: clamp(0.9rem, 1vw + 0.6rem, 1.1rem);
+  color: #444;
+}
+
+
+.carrossel-container {
+  width: 100%;
+  max-width: 900px;
+  overflow: hidden;
+  margin: 2em auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.carrossel {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  height: 250px;
+  animation: deslizar 20s linear infinite;
+}
+
+.carrossel img {
+  width: 18%;
+  height: 250px;
+  min-width: 100px;
+  object-fit: cover;
+}
+
+@keyframes deslizar {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .carrossel img {
+    width: 20%;
+  }
+}
+
+
+
+
+.rodape {
+  background-color: var(--bordo);
+  color: var(--bege);
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 0.9rem;
+}
+
+.rodape p {
+  margin: 0;
+  font-weight: 300;
+}
+
+.rodape p span {
+  font-weight: 600;
+  color: #FFF;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.redes-sociais {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.redes-sociais a {
+  text-decoration: none;
+  color: var(--bege);
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.redes-sociais a:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+.linha-decorativa {
+  height: 70vh;
+  /* altura ocupando quase toda a tela */
+}
+
+.linha-decorativa-2 {
+  height: 30vh;
+}
+
+.linha-decorativa-3 {
+  height: 30vh;
+}
+
+.linha-decorativa,
+.linha-decorativa-2,
+.linha-decorativa-3 {
+  background: linear-gradient(to bottom,
+      #FEFEF5 0%,
+      /* começa transparente/igual ao fundo */
+      #4F8C3E 10%,
+      #4F8C3E 90%,
+      #FEFEF5 100%
+      /* termina transparente/igual ao fundo */
+    );
+  border-radius: 1px;
+  /* cantinho sutil */
+  align-self: center;
+  /* força a linha a ficar no centro do flex container */
+  width: 1px;
+  margin-bottom: 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+
+  .linha-decorativa,
+  .linha-decorativa-2,
+  .linha-decorativa-3 {
+    width: 0.8px;
+  }
+
+  .linha-decorativa {
+    height: 30vh;
+  }
+
+  .linha-decorativa-2 {
+    height: 40vh;
+  }
+
+  .linha-decorativa-3 {
+    height: 40vh;
+  }
+}
+
+/* Chrome, Edge e Safari */
+::-webkit-scrollbar {
+  width: 12px;
+  /* largura da barra */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bege);
+  /* cor do fundo */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--bordo);
+  /* cor do "botão" */
+  border-radius: 10px;
+  /* cantos arredondados */
+  border: 2px solid var(--bege);
+  /* cria "respiro" */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #850f3e;
+  /* cor quando passa o mouse */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  /* fino */
+  scrollbar-color: var(--bordo) var(--bege);
+
+}
