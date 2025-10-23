@@ -15,6 +15,7 @@
   --verde: #4F8C3E;
   --azul: #021D44;
   --cinza: #1C1C1C;
+  --talco: #fffff9;
 }
 
 body {
@@ -22,7 +23,7 @@ body {
   font-family: 'Mulish', sans-serif;
   /* Opção de fonte para títulos Cormorant Infant */
   line-height: 1.6;
-  background-color: var(--bege);
+  background-color: var(--talco);
   color: var(--cinza);
   background-position: center;
   background-repeat: no-repeat;
@@ -344,7 +345,6 @@ label.alternativa-peq input[type="radio"]:checked+span {
   font-weight: 600;
   font-size: 1.4rem;
   color: var(--cinza);
-  margin-bottom: 0.5em;
   text-align: center;
   /* reseta comportamento do legend */
   padding: 0;
@@ -352,6 +352,14 @@ label.alternativa-peq input[type="radio"]:checked+span {
   /* força a se comportar como um bloco normal */
   width: 100%;
 
+}
+
+.enunciado-txt {
+    margin-bottom: 0.5em;
+}
+
+.enunciado {
+  margin-bottom: 2.5rem;
 }
 
 /* esconde o input padrão */
@@ -386,13 +394,14 @@ label.alternativa-peq input[type="radio"]:checked+span {
 
 /* quando a imagem for selecionada */
 .opcao-foto input[type="radio"]:checked + picture img {
-  outline: 5px solid rgba(50, 50, 50, 0.9); /* cinza translúcido */
+  outline: 10px solid #E6E6B8; /* cinza translúcido */
   transform: scale(1.04); /* leve aumento */
   box-shadow: 
-    0 0 10px rgba(50, 50, 50, 0.8),
-    0 0 20px rgba(50, 50, 50, 0.7)
-    0 0 40px rgba(50, 50, 50, 0.6),
-    0 0 60px rgba(50, 50, 50, 0.5);
+    0 0 10px #D3D381cc,
+    0 0 20px #DADA9Acc,
+    0 0 40px #e2e2b4cc,
+    0 0 60px #d7d7af83;
+    
   transition: all 0.25s ease; /* animação suave */
   border-radius: 12px; /* caso queira cantos levemente arredondados */
 }

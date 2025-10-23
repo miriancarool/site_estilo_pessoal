@@ -1,6 +1,3 @@
-
-console.log("JS carregado com sucesso!");
-
 document.addEventListener("DOMContentLoaded", () => {
   const folhas = document.querySelectorAll(".folha");
 
