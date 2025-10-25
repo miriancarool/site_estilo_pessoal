@@ -355,11 +355,11 @@ label.alternativa-peq input[type="radio"]:checked+span {
 }
 
 .enunciado-txt {
-    margin-bottom: 0.5em;
+  margin: 0.5rem auto;
 }
 
 .enunciado {
-  margin-bottom: 2.5rem;
+  margin: 0 auto 2.5rem;
 }
 
 /* esconde o input padrão */
@@ -369,11 +369,12 @@ label.alternativa-peq input[type="radio"]:checked+span {
 
 /* imagem da alternativa */
 .opcao-foto img {
-  width: 400px;
+  width: 650px;
   /* largura fixa no desktop */
-  max-width: 100%;
+  max-width: 70%;
   /* responsivo: nunca ultrapassa a tela */
-  height: auto;
+  height: 650px;
+  max-height: 70%;
   /* mantém proporção */
   border-radius: 20px;
   cursor: pointer;
@@ -384,6 +385,15 @@ label.alternativa-peq input[type="radio"]:checked+span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .opcao-foto img {
+    width: 300px;
+    max-width: 70%;
+    height: 300px;
+    max-height: 70%;
+  }
 }
 
 /* efeito hover */
