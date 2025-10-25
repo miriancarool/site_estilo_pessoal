@@ -350,22 +350,17 @@ label.alternativa-peq input[type="radio"]:checked+span {
   padding: 0;
   display: block;
   /* força a se comportar como um bloco normal */
-  width: 100%;
 
 }
 
 .enunciado-txt {
   margin: 0.5rem auto;
+  width: 100%;
 }
 
 .enunciado {
   margin: 0 auto 2.5rem;
-}
-
-@media (max-width: 768px) {
-  .enunciado {
-    margin: 0 1rem 2.5rem;
-  }
+  width: 90%;
 }
 
 /* esconde o input padrão */
