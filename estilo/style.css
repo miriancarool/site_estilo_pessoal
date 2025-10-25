@@ -362,6 +362,12 @@ label.alternativa-peq input[type="radio"]:checked+span {
   margin: 0 auto 2.5rem;
 }
 
+@media (max-width: 768px) {
+  .enunciado {
+    margin: 0 1rem 2.5rem;
+  }
+}
+
 /* esconde o input padrão */
 .opcao-foto input[type="radio"] {
   display: none;
@@ -384,7 +390,7 @@ label.alternativa-peq input[type="radio"]:checked+span {
   border-radius: 20px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  margin: auto auto 0;
+  margin: auto;
   display: block;
   pointer-events: none;
 }
@@ -414,6 +420,7 @@ label.alternativa-peq input[type="radio"]:checked+span {
   .opcao-foto img {
     max-width: 70%;
     height: auto;
+    margin-bottom: 0;
   }
 }
 
