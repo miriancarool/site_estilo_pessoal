@@ -367,26 +367,28 @@ label.alternativa-peq input[type="radio"]:checked+span {
   display: none;
 }
 
-/* imagem da alternativa */
-.opcao-foto img {
-  max-width: 60%;
-  max-height: 60%;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  margin: auto;
+.opcao-foto {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+
 }
 
-@media (max-width: 768px) {
-  .opcao-foto img {
-    max-width: 60%;
-    max-height: 60%;
-  }
+/* imagem da alternativa */
+.opcao-foto img {
+  max-width: 55%;
+  max-height: 55%;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin: auto auto 0;
+  display: block;
+  pointer-events: none;
 }
+
 
 /* efeito hover */
 .opcao-foto:hover img {
@@ -395,8 +397,8 @@ label.alternativa-peq input[type="radio"]:checked+span {
 }
 
 /* quando a imagem for selecionada */
-.opcao-foto input[type="radio"]:checked + picture img {
-  outline: 10px solid #E6E6B8; /* cinza translúcido */
+.opcao-foto input[type="radio"]:checked + img {
+  outline: 10px solid #E6E6B8;
   transform: scale(1.04); /* leve aumento */
   box-shadow: 
     0 0 10px #D3D381cc,
@@ -405,7 +407,13 @@ label.alternativa-peq input[type="radio"]:checked+span {
     0 0 60px #d7d7af83;
     
   transition: all 0.25s ease; /* animação suave */
-  border-radius: 12px; /* caso queira cantos levemente arredondados */
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .opcao-foto img {
+    max-width: 60%;
+  }
 }
 
 
@@ -423,7 +431,7 @@ legend {
   /* reseta completamente o estilo */
   display: block;
   /* força a ser um bloco normal */
-  width: 100%;
+  width: 90%;
   margin: 0;
   padding: 0;
 }
