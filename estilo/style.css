@@ -412,7 +412,8 @@ label.alternativa-peq input[type="radio"]:checked+span {
 
 @media (max-width: 768px) {
   .opcao-foto img {
-    max-width: 60%;
+    max-width: 70%;
+    height: auto;
   }
 }
 
